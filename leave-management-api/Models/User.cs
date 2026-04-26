@@ -5,8 +5,8 @@ public class User
     public string PasswwordHash { get; set; } = string.Empty;
     public string FullName { get; set; } = string.Empty;
     public UserRole Role { get; set; } = UserRole.EMPLOYEE;
-    public long? DepartmentId { get; set; }
-    public long? ManagerId { get; set; }
+    public Guid? DepartmentId { get; set; }
+    public Guid? ManagerId { get; set; }
     public bool IsActive { get; set; } = true;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
