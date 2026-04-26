@@ -8,6 +8,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 
 var app = builder.Build();
 
