@@ -16,6 +16,7 @@ D:\Dotnet\leave-management-api\leave-management-api\obj\Debug\net10.0\leave-mana
 D:\Dotnet\leave-management-api\leave-management-api\obj\Debug\net10.0\leave-management-api.csproj.CoreCompileInputs.cache
 D:\Dotnet\leave-management-api\leave-management-api\obj\Debug\net10.0\leave-management-api.MvcApplicationPartsAssemblyInfo.cs
 D:\Dotnet\leave-management-api\leave-management-api\obj\Debug\net10.0\leave-management-api.MvcApplicationPartsAssemblyInfo.cache
+D:\Dotnet\leave-management-api\leave-management-api\obj\Debug\net10.0\leave-management-api.sourcelink.json
 D:\Dotnet\leave-management-api\leave-management-api\obj\Debug\net10.0\rjimswa.dswa.cache.json
 D:\Dotnet\leave-management-api\leave-management-api\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 D:\Dotnet\leave-management-api\leave-management-api\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
