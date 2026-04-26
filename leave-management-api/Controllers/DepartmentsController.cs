@@ -28,7 +28,7 @@ public class DepartmentsController : ControllerBase
         }
     }
 
-    [HttpGet("{id: guid}")]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
         try
@@ -57,7 +57,7 @@ public class DepartmentsController : ControllerBase
         }
     }
 
-    [HttpPut("{id: guid}")]
+    [HttpPut("{id:guid}")]
     [Authorize(Roles = "ADMIN")]
     public async Task<IActionResult> Update(Guid id, UpdateDepartmentDto dto)
     {
@@ -76,7 +76,7 @@ public class DepartmentsController : ControllerBase
         }
     }
 
-    [HttpDelete("{id: guid}")]
+    [HttpDelete("{id:guid}")]
     [Authorize(Roles = "ADMIN")]
     public async Task<IActionResult> Delete(Guid id)
     {

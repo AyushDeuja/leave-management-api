@@ -35,23 +35,19 @@ namespace leave_management_api.Data.Migrations
                 name: "ManagerId1",
                 table: "Users");
 
-            migrationBuilder.AlterColumn<Guid>(
-                name: "ManagerId",
-                table: "Users",
-                type: "uuid",
-                nullable: true,
-                oldClrType: typeof(long),
-                oldType: "bigint",
-                oldNullable: true);
+            migrationBuilder.Sql(
+                """
+                ALTER TABLE "Users"
+                ALTER COLUMN "ManagerId" TYPE uuid
+                USING NULL::uuid;
+                """);
 
-            migrationBuilder.AlterColumn<Guid>(
-                name: "DepartmentId",
-                table: "Users",
-                type: "uuid",
-                nullable: true,
-                oldClrType: typeof(long),
-                oldType: "bigint",
-                oldNullable: true);
+            migrationBuilder.Sql(
+                """
+                ALTER TABLE "Users"
+                ALTER COLUMN "DepartmentId" TYPE uuid
+                USING NULL::uuid;
+                """);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_DepartmentId",

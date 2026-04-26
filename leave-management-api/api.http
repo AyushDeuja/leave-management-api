@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:5129
+
+### Create a new department
+POST {{baseUrl}}/api/departments
+Content-Type: application/json
+
+{
+    "Name": "Management",
+    "Description": "Management Department"
+}
+
+### Get all departments
+GET {{baseUrl}}/api/departments
+
+### Get a specific department by ID
+GET {{baseUrl}}/api/departments/{019dca71-4d5a-7218-8447-cf2ded574b77}
+
+### Update a department
+PUT {{baseUrl}}/api/departments/{019dca71-4d5a-7218-8447-cf2ded574b77}
+Content-Type: application/json
+
+{
+    "Name": "Test1",
+    "Description": "Test Department"
+}
+
+### Delete a department
+DELETE {{baseUrl}}/api/departments/{019dca71-4d5a-7218-8447-cf2ded574b77}
+
