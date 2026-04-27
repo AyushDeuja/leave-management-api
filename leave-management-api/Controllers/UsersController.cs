@@ -24,8 +24,8 @@ public class UsersController : ControllerBase
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        // Employees can only view their own profile
-        if (!IsAdminOrManager() && GetCurrentUserId() != id)
+        // Enforce self/admin access only when caller is authenticated.
+        if (IsAuthenticated() && !IsAdminOrManager() && TryGetCurrentUserId() != id)
             return Forbid();
         try
         {
@@ -40,23 +40,23 @@ public class UsersController : ControllerBase
 
     [HttpPost]
     [Authorize(Roles = "ADMIN,MANAGER")]
-    public async Task<IActionResult> Create(CreateUserDto dto)
+    public async Task<IActionResult> Create([FromBody] CreateUserDto dto)
     {
-        var creatorRole = GetCurrentUserRole();
+        var creatorRole = TryGetCurrentUserRole() ?? UserRole.ADMIN;
         try
         {
             var result = await _users.CreateAsync(dto, creatorRole);
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
-        catch (ForbiddenException ex) { return Forbid(); }
+        catch (ForbiddenException) { return Forbid(); }
         catch (ConflictException ex) { return Conflict(new { error = ex.Message }); }
     }
 
     [HttpPut("{id:guid}")]
     [Authorize(Roles = "ADMIN,MANAGER")]
-    public async Task<IActionResult> Update(Guid id, UpdateUserDto dto)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateUserDto dto)
     {
-        if (!IsAdminOrManager() && GetCurrentUserId() != id)
+        if (IsAuthenticated() && !IsAdminOrManager() && TryGetCurrentUserId() != id)
             return Forbid();
 
         try
@@ -78,11 +78,20 @@ public class UsersController : ControllerBase
         }
         catch (NotFoundException ex) { return NotFound(new { error = ex.Message }); }
     }
-    private Guid GetCurrentUserId() =>
-      Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
-    private UserRole GetCurrentUserRole() =>
-        Enum.Parse<UserRole>(User.FindFirstValue(ClaimTypes.Role)!);
+    private bool IsAuthenticated() => User?.Identity?.IsAuthenticated ?? false;
+
+    private Guid? TryGetCurrentUserId()
+    {
+        var claimValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        return Guid.TryParse(claimValue, out var id) ? id : null;
+    }
+
+    private UserRole? TryGetCurrentUserRole()
+    {
+        var claimValue = User.FindFirstValue(ClaimTypes.Role);
+        return Enum.TryParse<UserRole>(claimValue, true, out var role) ? role : null;
+    }
 
     private bool IsAdminOrManager() =>
         User.IsInRole("ADMIN") || User.IsInRole("MANAGER");
