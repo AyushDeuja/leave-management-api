@@ -171,3 +171,4 @@ C:\Users\ayush\lm-out\Debug\net10.0\leave-management-api.deps.json
 C:\Users\ayush\lm-out\Debug\net10.0\leave-management-api.runtimeconfig.json
 C:\Users\ayush\lm-out\Debug\net10.0\leave-management-api.dll
 C:\Users\ayush\lm-out\Debug\net10.0\leave-management-api.pdb
+d:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\BCrypt.Net-Next.dll

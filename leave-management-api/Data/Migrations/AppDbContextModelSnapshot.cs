@@ -227,9 +227,10 @@ namespace leave_management_api.Data.Migrations
                     b.Property<Guid?>("ManagerId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("PasswwordHash")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("PasswordHash");
 
                     b.Property<string>("Role")
                         .IsRequired()

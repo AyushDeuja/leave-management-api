@@ -1,5 +1,39 @@
 @baseUrl = http://localhost:5129
 
+### Create a new user
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+    "Email": "a@example.com",
+    "PasswordHash": "password",
+    "FullName": "Test User",
+    "Role": "EMPLOYEE",
+    "DepartmentId": "019dcf6e-b02e-79b6-b4c5-cdfe7adb6761",
+    "IsActive": true
+}
+
+### Get all users
+GET {{baseUrl}}/api/users
+
+### Get a specific user by ID
+GET {{baseUrl}}/api/users/{70894ccb-cad8-4c24-9d20-3a5c8f031f2e}
+
+### Update a user
+PUT {{baseUrl}}/api/users/{70894ccb-cad8-4c24-9d20-3a5c8f031f2e}
+Content-Type: application/json
+
+{
+    "Email": "tes@example.com",
+    "PasswordHash": "hashedpassword1",
+    "FullName": "Test User 1",
+    "Role": "EMPLOYEE",
+    "DepartmentId": "019dcf6e-b02e-79b6-b4c5-cdfe7adb6761"
+}
+
+### Delete a user
+DELETE {{baseUrl}}/api/users/{70894ccb-cad8-4c24-9d20-3a5c8f031f2e}
+
 ### Create a new department
 POST {{baseUrl}}/api/departments
 Content-Type: application/json
@@ -13,10 +47,10 @@ Content-Type: application/json
 GET {{baseUrl}}/api/departments
 
 ### Get a specific department by ID
-GET {{baseUrl}}/api/departments/{019dca71-4d5a-7218-8447-cf2ded574b77}
+GET {{baseUrl}}/api/departments/{019dcf6e-b02e-79b6-b4c5-cdfe7adb6761}
 
 ### Update a department
-PUT {{baseUrl}}/api/departments/{019dca71-4d5a-7218-8447-cf2ded574b77}
+PUT {{baseUrl}}/api/departments/{019dcf6e-b02e-79b6-b4c5-cdfe7adb6761}
 Content-Type: application/json
 
 {
@@ -25,5 +59,5 @@ Content-Type: application/json
 }
 
 ### Delete a department
-DELETE {{baseUrl}}/api/departments/{019dca71-4d5a-7218-8447-cf2ded574b77}
+DELETE {{baseUrl}}/api/departments/{019dcf6e-b02e-79b6-b4c5-cdfe7adb6761}
 

@@ -49,28 +49,26 @@ namespace leave_management_api.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    PasswwordHash = table.Column<string>(type: "text", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: false),
                     FullName = table.Column<string>(type: "text", nullable: false),
                     Role = table.Column<string>(type: "text", nullable: false),
-                    DepartmentId = table.Column<long>(type: "bigint", nullable: true),
-                    ManagerId = table.Column<long>(type: "bigint", nullable: true),
+                    DepartmentId = table.Column<Guid>(type: "uuid", nullable: true),
+                    ManagerId = table.Column<Guid>(type: "uuid", nullable: true),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DepartmentId1 = table.Column<Guid>(type: "uuid", nullable: true),
-                    ManagerId1 = table.Column<Guid>(type: "uuid", nullable: true)
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Departments_DepartmentId1",
-                        column: x => x.DepartmentId1,
+                        name: "FK_Users_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Users_Users_ManagerId1",
-                        column: x => x.ManagerId1,
+                        name: "FK_Users_Users_ManagerId",
+                        column: x => x.ManagerId,
                         principalTable: "Users",
                         principalColumn: "Id");
                 });
@@ -197,14 +195,14 @@ namespace leave_management_api.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_DepartmentId1",
+                name: "IX_Users_DepartmentId",
                 table: "Users",
-                column: "DepartmentId1");
+                column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_ManagerId1",
+                name: "IX_Users_ManagerId",
                 table: "Users",
-                column: "ManagerId1");
+                column: "ManagerId");
         }
 
         /// <inheritdoc />

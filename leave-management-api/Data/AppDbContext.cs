@@ -17,6 +17,10 @@ public class AppDbContext : DbContext
             .Property(u => u.Role)
             .HasConversion<string>();
 
+        modelBuilder.Entity<User>()
+            .Property(u => u.PasswordHash)
+            .HasColumnName("PasswordHash");
+
         modelBuilder.Entity<LeaveRequest>()
             .Property(lr => lr.Status)
             .HasConversion<string>();

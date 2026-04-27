@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace leave_management_api.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260426134301_InitialCreate")]
+    [Migration("20260427133008_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -213,10 +213,7 @@ namespace leave_management_api.Data.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasDefaultValueSql("NOW()");
 
-                    b.Property<long?>("DepartmentId")
-                        .HasColumnType("bigint");
-
-                    b.Property<Guid?>("DepartmentId1")
+                    b.Property<Guid?>("DepartmentId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Email")
@@ -230,15 +227,13 @@ namespace leave_management_api.Data.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
-                    b.Property<long?>("ManagerId")
-                        .HasColumnType("bigint");
-
-                    b.Property<Guid?>("ManagerId1")
+                    b.Property<Guid?>("ManagerId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("PasswwordHash")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("PasswordHash");
 
                     b.Property<string>("Role")
                         .IsRequired()
@@ -249,9 +244,9 @@ namespace leave_management_api.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId1");
+                    b.HasIndex("DepartmentId");
 
-                    b.HasIndex("ManagerId1");
+                    b.HasIndex("ManagerId");
 
                     b.ToTable("Users");
                 });
@@ -317,11 +312,11 @@ namespace leave_management_api.Data.Migrations
                 {
                     b.HasOne("Department", "Department")
                         .WithMany("Users")
-                        .HasForeignKey("DepartmentId1");
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("User", "Manager")
                         .WithMany()
-                        .HasForeignKey("ManagerId1");
+                        .HasForeignKey("ManagerId");
 
                     b.Navigation("Department");
 
