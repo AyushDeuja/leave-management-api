@@ -39,7 +39,7 @@ POST {{baseUrl}}/api/departments
 Content-Type: application/json
 
 {
-    "Name": "Management",
+    "Name": "Mg",
     "Description": "Management Department"
 }
 
