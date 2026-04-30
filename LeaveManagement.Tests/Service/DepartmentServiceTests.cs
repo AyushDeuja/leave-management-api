@@ -87,10 +87,11 @@ public class DepartmentServiceTests
         var db = DbContextFactory.Create();
         var service = new DepartmentService(db);
 
-        var act = async () => await service.GetByIdAsync(Guid.NewGuid());
+        var id = Guid.NewGuid();
+        var act = async () => await service.GetByIdAsync(id);
 
         await act.Should().ThrowAsync<NotFoundException>()
-            .WithMessage("*{Guid.NewGuid()}*");
+            .WithMessage($"*{id}*");
     }
 
     // for CreateAsync function or create

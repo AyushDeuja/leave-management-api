@@ -41,7 +41,7 @@ public class DepartmentService : IDepartmentService
         var nameTaken = await _db.Departments.AnyAsync(d => d.Name.ToLower() == dto.Name.ToLower());
 
         if (nameTaken)
-            throw new BadRequestException($"Department name '{dto.Name}' is already taken.");
+            throw new ConflictException($"Department name '{dto.Name}' is already taken.");
 
         var dept = new Department
         {
@@ -64,7 +64,7 @@ public class DepartmentService : IDepartmentService
         {
             var nameTaken = await _db.Departments.AnyAsync(d => d.Id != id && d.Name.ToLower() == dto.Name.Trim().ToLower());
             if (nameTaken)
-                throw new BadRequestException($"Department name '{dto.Name}' is already taken.");
+                throw new ConflictException($"Department name '{dto.Name}' is already taken.");
             dept.Name = dto.Name.Trim();
         }
         if (dto.Description is not null)
@@ -82,7 +82,7 @@ public class DepartmentService : IDepartmentService
         var dept = await _db.Departments.FindAsync(id) ?? throw new NotFoundException($"Department {id} not found.");
 
         if (dept.Users != null && dept.Users.Any(u => u.IsActive))
-            throw new BadRequestException("Cannot delete department with active users.");
+            throw new ConflictException("Cannot delete department with active users.");
 
         _db.Departments.Remove(dept);
         await _db.SaveChangesAsync();
