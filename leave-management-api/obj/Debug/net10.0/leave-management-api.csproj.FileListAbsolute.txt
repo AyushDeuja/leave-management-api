@@ -172,3 +172,11 @@ C:\Users\ayush\lm-out\Debug\net10.0\leave-management-api.runtimeconfig.json
 C:\Users\ayush\lm-out\Debug\net10.0\leave-management-api.dll
 C:\Users\ayush\lm-out\Debug\net10.0\leave-management-api.pdb
 d:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\BCrypt.Net-Next.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
