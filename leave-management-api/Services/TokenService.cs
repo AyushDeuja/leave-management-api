@@ -23,7 +23,10 @@ public class TokenService : ITokenService
           new Claim("department_id", user.DepartmentId?.ToString() ?? "")
         };
 
-        var secret = _config["Jwt:Secret"];
+        var secret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? _config["Jwt:Secret"];
+        if (string.IsNullOrEmpty(secret))
+            throw new InvalidOperationException("JWT_SECRET environment variable or Jwt:Secret configuration is not set.");
+
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         var expiry = DateTime.UtcNow.AddMinutes(int.Parse(_config["Jwt:ExpiryMinutes"]!));
