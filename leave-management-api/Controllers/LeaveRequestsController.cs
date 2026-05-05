@@ -53,7 +53,7 @@ public class LeaveRequestsController : ControllerBase
             return Ok(result);
         }
         catch (NotFoundException ex) { return NotFound(new { error = ex.Message }); }
-        catch (ForbiddenException ex) { return Forbid(); }
+        catch (ForbiddenException) { return Forbid(); }
     }
 
     [HttpPost("{id:guid}/approve")]
@@ -84,6 +84,6 @@ public class LeaveRequestsController : ControllerBase
         }
         catch (NotFoundException ex) { return NotFound(new { error = ex.Message }); }
         catch (ConflictException ex) { return Conflict(new { error = ex.Message }); }
-        catch (ForbiddenException ex) { return Forbid(); }
+        catch (ForbiddenException) { return Forbid(); }
     }
 }

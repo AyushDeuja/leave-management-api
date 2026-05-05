@@ -1,12 +1,11 @@
 @baseUrl = http://localhost:5129
 
-@accessToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFmM2ZkNDBhLTk4MWQtNDI2My04Yzk3LWJkZWUwOTczNjNmNyIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUZXN0IFVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBRE1JTiIsImRlcGFydG1lbnRfaWQiOiIwMTlkY2Y2ZS1iMDJlLTc5YjYtYjRjNS1jZGZlN2FkYjY3NjEiLCJleHAiOjE3Nzc3NDAzMjQsImlzcyI6ImxlYXZlLW1hbmFnZW1lbnQtYXBpIiwiYXVkIjoibGVhdmUtbWFuYWdlbWVudC1hcGktY2xpZW50In0.YYDNbjsCo165YIwupu9AdX4ZmEnrkGPts52wsvMI-Xk
-### Login
+@accessToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIzMmZmMzRlLTViZGUtNDQxNy1hMzdjLTg3ZTYyYTJiZDk0OCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUZXN0IFVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ1c2VyMUBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJFTVBMT1lFRSIsImRlcGFydG1lbnRfaWQiOiIwMTlkY2Y2ZS1iMDJlLTc5YjYtYjRjNS1jZGZlN2FkYjY3NjEiLCJleHAiOjE3NzgwMDA4NTEsImlzcyI6ImxlYXZlLW1hbmFnZW1lbnQtYXBpIiwiYXVkIjoibGVhdmUtbWFuYWdlbWVudC1hcGktY2xpZW50In0.zxZSvO-nWTLOHZBtSbWPtqrsncOhCYAGrycEJo90v70
 POST {{baseUrl}}/api/auth/login
 Content-Type: application/json
 
 {
-    "Email": "admin@gmail.com",
+    "Email": "user1@gmail.com",
     "Password": "password"
 }
 
@@ -16,10 +15,10 @@ Content-Type: application/json
 Authorization: Bearer {{accessToken}}
 
 {
-    "Email": "admin@gmail.com",
+    "Email": "user1@gmail.com",
     "PasswordHash": "password",
     "FullName": "Test User",
-    "Role": "ADMIN",
+    "Role": "EMPLOYEE",
     "DepartmentId": "019dcf6e-b02e-79b6-b4c5-cdfe7adb6761",
     "IsActive": true
 }
@@ -79,5 +78,51 @@ Authorization: Bearer {{accessToken}}
 
 ### Delete a department
 DELETE {{baseUrl}}/api/departments/{019dd2d6-cfd6-78f4-bd7d-2178fe6a2e8b}
+Authorization: Bearer {{accessToken}}
+
+### Submit a leave request
+POST {{baseUrl}}/api/leave-requests
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "LeaveTypeId": "22222222-2222-2222-2222-222222222222",
+    "StartDate": "2026-05-18",
+    "EndDate": "2026-05-20",
+    "Reason": "Family trip"
+}
+
+### Get my leave requests
+GET {{baseUrl}}/api/leave-requests
+Authorization: Bearer {{accessToken}}
+
+### Get a leave request by ID
+GET {{baseUrl}}/api/leave-requests/{44f9a9ba-4ce4-41ba-a21f-19359d419cb8}
+Authorization: Bearer {{accessToken}}
+
+### Approve or reject a leave request
+POST {{baseUrl}}/api/leave-requests/{44f9a9ba-4ce4-41ba-a21f-19359d419cb8}/approve
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "Action": "APPROVED",
+    "Remarks": "Approved for travel"
+}
+
+### Cancel a leave request
+POST {{baseUrl}}/api/leave-requests/{44f9a9ba-4ce4-41ba-a21f-19359d419cb8}/cancel
+Authorization: Bearer {{accessToken}}
+
+### Get my leave balances
+GET {{baseUrl}}/api/leave-balances?year=2026
+Authorization: Bearer {{accessToken}}
+
+### Get a user's leave balances
+GET {{baseUrl}}/api/leave-balances/users/{232ff34e-5bde-4417-a37c-87e62a2bd948}?year=2026
+Authorization: Bearer {{accessToken}}
+
+### Assign leave balances for a year
+POST {{baseUrl}}/api/leave-balances/assign?year=2026
 Authorization: Bearer {{accessToken}}
 

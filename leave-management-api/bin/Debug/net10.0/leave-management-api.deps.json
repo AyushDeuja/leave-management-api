@@ -13,6 +13,7 @@
           "Microsoft.AspNetCore.OpenApi": "10.0.6",
           "Microsoft.EntityFrameworkCore.Design": "10.0.7",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.1",
+          "Quartz.AspNetCore": "3.18.1",
           "System.IdentityModel.Tokens.Jwt": "8.18.0"
         },
         "runtime": {
@@ -514,6 +515,47 @@
           }
         }
       },
+      "Quartz/3.18.1": {
+        "runtime": {
+          "lib/net10.0/Quartz.dll": {
+            "assemblyVersion": "3.18.1.0",
+            "fileVersion": "3.18.1.0"
+          }
+        }
+      },
+      "Quartz.AspNetCore/3.18.1": {
+        "dependencies": {
+          "Quartz.Extensions.Hosting": "3.18.1"
+        },
+        "runtime": {
+          "lib/net10.0/Quartz.AspNetCore.dll": {
+            "assemblyVersion": "3.18.1.0",
+            "fileVersion": "3.18.1.0"
+          }
+        }
+      },
+      "Quartz.Extensions.DependencyInjection/3.18.1": {
+        "dependencies": {
+          "Quartz": "3.18.1"
+        },
+        "runtime": {
+          "lib/net10.0/Quartz.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "3.18.1.0",
+            "fileVersion": "3.18.1.0"
+          }
+        }
+      },
+      "Quartz.Extensions.Hosting/3.18.1": {
+        "dependencies": {
+          "Quartz.Extensions.DependencyInjection": "3.18.1"
+        },
+        "runtime": {
+          "lib/net10.0/Quartz.Extensions.Hosting.dll": {
+            "assemblyVersion": "3.18.1.0",
+            "fileVersion": "3.18.1.0"
+          }
+        }
+      },
       "System.CodeDom/6.0.0": {
         "runtime": {
           "lib/net6.0/System.CodeDom.dll": {
@@ -790,6 +832,34 @@
       "sha512": "sha512-P6EwH0Q4xkaA264iNZDqCPhWt8pscfUGxXazDQg4noBfqjoOlk4hKWfvBjF9ZX3R/9JybRmmJfmxr2iBMj0EpA==",
       "path": "npgsql.entityframeworkcore.postgresql/10.0.1",
       "hashPath": "npgsql.entityframeworkcore.postgresql.10.0.1.nupkg.sha512"
+    },
+    "Quartz/3.18.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-q/n/gKLcApDlTk90BRNvj6P8HKR+vbtZEQxo5BAbeEoN5e/8/aqRuG6yH7tVg02CeAXAD40boS74s9hVnh4XDw==",
+      "path": "quartz/3.18.1",
+      "hashPath": "quartz.3.18.1.nupkg.sha512"
+    },
+    "Quartz.AspNetCore/3.18.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ov6wR05hvxFeusryqnmBTZJEnEWC8pHFKC55td7C6F5Y2MrkdlSg9IR4GVkFGeZFmnjtTL3LlsHCAM9cYwMk6A==",
+      "path": "quartz.aspnetcore/3.18.1",
+      "hashPath": "quartz.aspnetcore.3.18.1.nupkg.sha512"
+    },
+    "Quartz.Extensions.DependencyInjection/3.18.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ct+sIqr7n961jvo695GnqHjB+dhK6b/Y9LSXxK6n9EJ6JzMXpwcusd5u2lCqVqqNHaiGBLXp37E75hpPXHQkzA==",
+      "path": "quartz.extensions.dependencyinjection/3.18.1",
+      "hashPath": "quartz.extensions.dependencyinjection.3.18.1.nupkg.sha512"
+    },
+    "Quartz.Extensions.Hosting/3.18.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kZ7ufndI5vygLpI0kCeukVKlzpRFtGjfoU3BoWZ6u6QKoRF2Z3KV1dSpv+VpMqRekz3SrObfN0iLZKWldoZLZw==",
+      "path": "quartz.extensions.hosting/3.18.1",
+      "hashPath": "quartz.extensions.hosting.3.18.1.nupkg.sha512"
     },
     "System.CodeDom/6.0.0": {
       "type": "package",
