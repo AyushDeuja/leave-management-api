@@ -3,9 +3,12 @@ using Microsoft.EntityFrameworkCore;
 public class UserService : IUserService
 {
     private readonly AppDbContext _db;
-    public UserService(AppDbContext db)
+    private readonly ILeaveBalanceService _leaveBalanceService;
+
+    public UserService(AppDbContext db, ILeaveBalanceService leaveBalanceService)
     {
         _db = db;
+        _leaveBalanceService = leaveBalanceService;
     }
 
     public async Task<UserResponseDto> CreateAsync(CreateUserDto dto, UserRole creatorRole)
@@ -38,6 +41,11 @@ public class UserService : IUserService
         };
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
+
+        if (user.IsActive)
+        {
+            await _leaveBalanceService.AssignBalancesForUserAsync(user.Id, DateTime.UtcNow.Year);
+        }
 
         return MapToDto(user);
     }

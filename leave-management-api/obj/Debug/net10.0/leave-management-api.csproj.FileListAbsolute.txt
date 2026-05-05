@@ -180,3 +180,7 @@ D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.Iden
 D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
 D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Quartz.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Quartz.AspNetCore.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Quartz.Extensions.DependencyInjection.dll
+D:\Dotnet\Leave Management\leave-management-api\bin\Debug\net10.0\Quartz.Extensions.Hosting.dll
