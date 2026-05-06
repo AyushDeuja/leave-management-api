@@ -1,11 +1,11 @@
 @baseUrl = http://localhost:5129
 
-@accessToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIzMmZmMzRlLTViZGUtNDQxNy1hMzdjLTg3ZTYyYTJiZDk0OCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUZXN0IFVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ1c2VyMUBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJFTVBMT1lFRSIsImRlcGFydG1lbnRfaWQiOiIwMTlkY2Y2ZS1iMDJlLTc5YjYtYjRjNS1jZGZlN2FkYjY3NjEiLCJleHAiOjE3NzgwMDA4NTEsImlzcyI6ImxlYXZlLW1hbmFnZW1lbnQtYXBpIiwiYXVkIjoibGVhdmUtbWFuYWdlbWVudC1hcGktY2xpZW50In0.zxZSvO-nWTLOHZBtSbWPtqrsncOhCYAGrycEJo90v70
+@accessToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFmM2ZkNDBhLTk4MWQtNDI2My04Yzk3LWJkZWUwOTczNjNmNyIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJUZXN0IFVzZXIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBnbWFpbC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBRE1JTiIsImRlcGFydG1lbnRfaWQiOiIwMTlkY2Y2ZS1iMDJlLTc5YjYtYjRjNS1jZGZlN2FkYjY3NjEiLCJleHAiOjE3NzgwODEzNTUsImlzcyI6ImxlYXZlLW1hbmFnZW1lbnQtYXBpIiwiYXVkIjoibGVhdmUtbWFuYWdlbWVudC1hcGktY2xpZW50In0.zaMaZDsefnONHFYH6oyg-rwz0YPTWEvtrs4WN62rhtw
 POST {{baseUrl}}/api/auth/login
 Content-Type: application/json
 
 {
-    "Email": "user1@gmail.com",
+    "Email": "admin@gmail.com",
     "Password": "password"
 }
 
@@ -15,7 +15,7 @@ Content-Type: application/json
 Authorization: Bearer {{accessToken}}
 
 {
-    "Email": "user1@gmail.com",
+    "Email": "user2@gmail.com",
     "PasswordHash": "password",
     "FullName": "Test User",
     "Role": "EMPLOYEE",
@@ -78,6 +78,34 @@ Authorization: Bearer {{accessToken}}
 
 ### Delete a department
 DELETE {{baseUrl}}/api/departments/{019dd2d6-cfd6-78f4-bd7d-2178fe6a2e8b}
+Authorization: Bearer {{accessToken}}
+
+### Get all leave types
+GET {{baseUrl}}/api/leave-types
+Authorization: Bearer {{accessToken}}
+
+### Create a new leave type (requires ADMIN role)
+POST {{baseUrl}}/api/leave-types
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "Name": "Vacation",
+    "Description": "Annual vacation leave",
+    "DefaultDaysPerYear": 20
+}
+
+### Update a leave type (requires ADMIN role)
+PUT {{baseUrl}}/api/leave-types/{019dfdb2-3283-794e-8440-764c704bdc4d}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "isActive": true
+}
+
+### Delete a leave type (requires ADMIN role)
+DELETE {{baseUrl}}/api/leave-types/{019dfdb2-3283-794e-8440-764c704bdc4d}
 Authorization: Bearer {{accessToken}}
 
 ### Submit a leave request
