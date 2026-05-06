@@ -46,9 +46,9 @@ public class LeaveTypesController : ControllerBase
         return CreatedAtAction(nameof(GetAll), new { id = type.Id }, type);
     }
 
-    [HttpPut("{id:long}")]
+    [HttpPut("{id:Guid}")]
     [Authorize(Roles = "ADMIN")]
-    public async Task<IActionResult> Update(long id, [FromBody] UpdateLeaveTypeDto dto)
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateLeaveTypeDto dto)
     {
         var type = await _db.LeaveTypes.FindAsync(id);
         if (type is null) return NotFound(new { error = $"Leave type {id} not found." });
@@ -62,9 +62,9 @@ public class LeaveTypesController : ControllerBase
         return Ok(type);
     }
 
-    [HttpDelete("{id:long}")]
+    [HttpDelete("{id:Guid}")]
     [Authorize(Roles = "ADMIN")]
-    public async Task<IActionResult> Delete(long id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         var type = await _db.LeaveTypes.FindAsync(id);
         if (type is null) return NotFound(new { error = $"Leave type {id} not found." });
