@@ -1,3 +1,5 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -69,6 +71,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILeaveBalanceService, LeaveBalanceService>();
 builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
 
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
